@@ -15,11 +15,11 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/night_mode"
-        app:layout_constraintBottom_toTopOf="@+id/timer_light"
+        app:layout_constraintBottom_toTopOf="@+id/btnStart"
         app:neumorph_shapeType="basin">
 
         <TextView
-            android:id="@+id/time"
+            android:id="@+id/tvTime"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -44,50 +44,50 @@
         app:neumorph_shapeType="flat" />
 
     <soup.neumorphism.NeumorphFloatingActionButton
-        android:id="@+id/timer_light"
+        android:id="@+id/btnSelect"
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:layout_margin="20dp"
         android:padding="20dp"
         android:src="@drawable/ic_timer_light"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintRight_toLeftOf="@+id/play_light"
+        app:layout_constraintRight_toLeftOf="@+id/btnStart"
         app:layout_constraintStart_toStartOf="parent"
         app:neumorph_shapeType="flat" />
 
     <soup.neumorphism.NeumorphFloatingActionButton
-        android:id="@+id/play_light"
+        android:id="@+id/btnStart"
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:layout_margin="20dp"
         android:padding="10dp"
         android:src="@drawable/ic_play_light"
-        app:layout_constraintLeft_toRightOf="@+id/timer_light"
-        app:layout_constraintRight_toLeftOf="@id/pause_light"
+        app:layout_constraintLeft_toRightOf="@+id/btnSelect"
+        app:layout_constraintRight_toLeftOf="@id/btnPause"
         app:layout_constraintBottom_toBottomOf="parent"
         app:neumorph_shapeType="flat" />
 
     <soup.neumorphism.NeumorphFloatingActionButton
-        android:id="@+id/pause_light"
+        android:id="@+id/btnPause"
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:layout_margin="20dp"
         android:padding="18dp"
         android:src="@drawable/ic_pause_light"
-        app:layout_constraintLeft_toRightOf="@+id/play_light"
-        app:layout_constraintRight_toLeftOf="@+id/reset_light"
+        app:layout_constraintLeft_toRightOf="@+id/btnStart"
+        app:layout_constraintRight_toLeftOf="@+id/btnReset"
         app:layout_constraintBottom_toBottomOf="parent"
         app:neumorph_shapeType="flat" />
 
     <soup.neumorphism.NeumorphFloatingActionButton
-        android:id="@+id/reset_light"
+        android:id="@+id/btnReset"
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:layout_margin="20dp"
         android:padding="20dp"
         android:src="@drawable/ic_replay_light"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toRightOf="@+id/pause_light"
+        app:layout_constraintLeft_toRightOf="@+id/btnPause"
         app:layout_constraintEnd_toEndOf="parent"
         app:neumorph_shapeType="flat" />
 

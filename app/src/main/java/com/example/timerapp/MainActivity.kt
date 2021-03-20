@@ -9,14 +9,16 @@ import java.util.concurrent.TimeUnit
 
 class MainActivity : AppCompatActivity() {
 
-    var hour = 0
-    var min = 0
-    var sec = 0
+    private lateinit var mCountDown: CountDownTimer
+    private var isRunning: Boolean = false
+    private var startTime: Long = 0
 
-    var countNum: Long = 0
+    var hour: Int = 0
+    var min: Int = 0
+    var sec: Int = 0
 
-    // millseconds
-    var interval: Long = 10
+    var currentTime: Long = 0
+    var isFirst: Boolean = true
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,44 +27,78 @@ class MainActivity : AppCompatActivity() {
         btnSelect.setOnClickListener {
             val dialog = TimeSet()
             dialog.show(supportFragmentManager, "TimeSet")
+            isRunning = false
+            if (!isFirst) mCountDown.cancel()
+            isFirst = false
         }
 
         btnStart.setOnClickListener {
-            val countDown = object : CountDownTimer(countNum, interval) {
-                override fun onTick(millisUntilFinished: Long) {
-                    // 単位変換
-                    val hms = String.format(
-                        "%02d:%02d:%02d",
-                        TimeUnit.MILLISECONDS.toHours(millisUntilFinished),
-                        TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished) - TimeUnit.HOURS.toMinutes(
-                            TimeUnit.MILLISECONDS.toHours(
-                                millisUntilFinished
-                            )
-                        ),
-                        TimeUnit.MILLISECONDS.toSeconds(millisUntilFinished) - TimeUnit.MINUTES.toSeconds(
-                            TimeUnit.MILLISECONDS.toMinutes(
-                                millisUntilFinished
-                            )
-                        )
-                    )
-                    tvTime.setText(hms)
-                }
+            if (!isRunning) startTimer(startTime)
+        }
 
-                override fun onFinish() {
-                    TODO("Not yet implemented")
-                }
-            }
-            countDown.start()
+        btnReset.setOnClickListener {
+            resetTimer()
+        }
+
+        btnPause.setOnClickListener {
+            if (isRunning) pauseTimer()
         }
     }
 
-    fun displayTime(hour: Int, min: Int, sec: Int) {
-        tvTime.text = "${hour}:${min}:${sec}"
+    fun initDisplayTime(hour: Int, min: Int, sec: Int) {
+        tvTime.setText(String.format("%02d:%02d:%02d", hour, min, sec))
         this.hour = hour
         this.min = min
         this.sec = sec
+    }
 
-        // millseconds で開始時間設定
-        countNum = ((hour * 60 * 60 * 1000) + (min * 60 * 1000) + (sec * 1000)).toLong()
+    fun setStartTime() {
+        startTime = ((hour * 60 * 60 * 1000) + (min * 60 * 1000) + (sec * 1000)).toLong()
+    }
+
+    fun startTimer(time: Long) {
+        mCountDown = object : CountDownTimer(time, 1000) {
+            override fun onTick(millisUntilFinished: Long) {
+                currentTime = millisUntilFinished
+                convertDisplayTime(millisUntilFinished)
+            }
+
+            override fun onFinish() {
+                tvTime.setText(("00:00:00"))
+            }
+        }
+        mCountDown.start()
+
+        isRunning = true
+    }
+
+    fun pauseTimer() {
+        mCountDown.cancel()
+        startTime = currentTime
+        isRunning = false
+    }
+
+    fun resetTimer() {
+        setStartTime()
+        convertDisplayTime(startTime)
+        isRunning = false
+        mCountDown.cancel()
+    }
+
+    private fun convertDisplayTime(time: Long) {
+        val hh = TimeUnit.MILLISECONDS.toHours(time)
+        val mm =
+            TimeUnit.MILLISECONDS.toMinutes(time) - TimeUnit.HOURS.toMinutes(
+                TimeUnit.MILLISECONDS.toHours(
+                    time
+                )
+            )
+        val ss =
+            TimeUnit.MILLISECONDS.toSeconds(time) - TimeUnit.MINUTES.toSeconds(
+                TimeUnit.MILLISECONDS.toMinutes(
+                    time
+                )
+            )
+        tvTime.setText(String.format("%02d:%02d:%02d", hh, mm, ss))
     }
 }

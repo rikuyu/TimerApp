@@ -34,12 +34,12 @@ class TimeSet : DialogFragment(), NumberPicker.OnValueChangeListener {
 
         val minPicker = dialogView.findViewById<NumberPicker>(R.id.minPicker)
         minPicker.minValue = 0
-        minPicker.maxValue = 60
+        minPicker.maxValue = 59
         minPicker.value = 5
 
         val secPicker = dialogView.findViewById<NumberPicker>(R.id.secPicker)
         secPicker.minValue = 0
-        secPicker.maxValue = 60
+        secPicker.maxValue = 59
         secPicker.value = 0
 
         builder.setView(dialogView)
@@ -54,9 +54,9 @@ class TimeSet : DialogFragment(), NumberPicker.OnValueChangeListener {
             val min = java.lang.String.valueOf(minPicker.getValue()).toInt()
             val sec = java.lang.String.valueOf(secPicker.getValue()).toInt()
 
-            mainActivity?.displayTime(hour, min, sec)
+            mainActivity?.initDisplayTime(hour, min, sec)
+            mainActivity?.setStartTime()
         }
-
         return builder.create()
     }
 
