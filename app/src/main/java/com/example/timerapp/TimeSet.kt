@@ -43,7 +43,7 @@ class TimeSet : DialogFragment(), NumberPicker.OnValueChangeListener {
         secPicker.value = 0
 
         builder.setView(dialogView)
-        builder.setTitle("Set Timer")
+        builder.setTitle("Setting Timer")
 
         builder.setPositiveButton(
             "ok"
