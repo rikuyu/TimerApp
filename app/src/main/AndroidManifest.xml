@@ -4,9 +4,9 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@drawable/alarm"
+        android:icon="@drawable/clock"
         android:label="Timer"
-        android:roundIcon="@drawable/alarm"
+        android:roundIcon="@drawable/clock"
         android:supportsRtl="true"
         android:theme="@style/Theme.TimerApp">
         <activity android:name=".MainActivity">
