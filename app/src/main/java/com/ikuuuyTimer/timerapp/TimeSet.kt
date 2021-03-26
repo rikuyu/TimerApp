@@ -1,4 +1,4 @@
-package com.example.timerapp
+package com.ikuuuyTimer.timerapp
 
 import android.app.AlertDialog
 import android.app.Dialog
@@ -6,7 +6,6 @@ import android.content.Context
 import android.os.Bundle
 import android.widget.NumberPicker
 import androidx.fragment.app.DialogFragment
-import kotlinx.android.synthetic.main.timer_setting.*
 
 
 class TimeSet : DialogFragment(), NumberPicker.OnValueChangeListener {

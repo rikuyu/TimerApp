@@ -1,4 +1,4 @@
-package com.example.timerapp
+package com.ikuuuyTimer.timerapp
 
 import android.content.pm.ActivityInfo
 import android.media.AudioManager

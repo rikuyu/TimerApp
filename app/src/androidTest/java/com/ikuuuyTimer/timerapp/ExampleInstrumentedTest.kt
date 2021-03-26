@@ -1,4 +1,4 @@
-package com.example.timerapp
+package com.ikuuuyTimer.timerapp
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
