@@ -23,6 +23,11 @@
 - ダークモードの実装
 - 変更可能なアラーム音
 
-## 作者
 
+
+## リンク
+- アプリダウンロードリンク
+[【勉強・料理】シンプルタイマー
+](https://play.google.com/store/apps/details?id=com.ikuuuyTimer.timerapp)
+- 作者
 [rikuyu](https://github.com/rikuyu)
