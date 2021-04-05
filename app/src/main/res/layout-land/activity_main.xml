@@ -20,11 +20,14 @@
 
         <TextView
             android:id="@+id/tvTime"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginBottom="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
             android:text="00:00:00"
+            android:autoSizeTextType="uniform"
+            android:autoSizeMaxTextSize="100sp"
+            android:autoSizeMinTextSize="40sp"
+            android:autoSizeStepGranularity="4sp"
             android:textColor="@color/context"
             android:textSize="120sp" />
 
@@ -35,10 +38,9 @@
         android:src="@drawable/ic_off"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:layout_margin="20dp"
         android:padding="20dp"
         app:neumorph_shapeType="flat"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/time_card"
         app:layout_constraintLeft_toRightOf="@+id/btnReset"
         app:layout_constraintBottom_toBottomOf="parent" />
@@ -47,36 +49,33 @@
         android:id="@+id/btnSelect"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:layout_margin="20dp"
         android:padding="20dp"
         android:src="@drawable/ic_timer_light"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintRight_toLeftOf="@+id/btnStart"
+        app:layout_constraintRight_toLeftOf="@+id/btnPause"
         app:layout_constraintTop_toBottomOf="@+id/time_card"
-        app:layout_constraintStart_toStartOf="parent"
-        app:neumorph_shapeType="flat" />
-
-    <soup.neumorphism.NeumorphFloatingActionButton
-        android:id="@+id/btnStart"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:layout_margin="20dp"
-        android:padding="10dp"
-        android:src="@drawable/ic_play_light"
-        app:layout_constraintLeft_toRightOf="@+id/btnSelect"
-        app:layout_constraintTop_toBottomOf="@+id/time_card"
-        app:layout_constraintRight_toLeftOf="@id/btnPause"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
         app:neumorph_shapeType="flat" />
 
     <soup.neumorphism.NeumorphFloatingActionButton
         android:id="@+id/btnPause"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:layout_margin="20dp"
-        android:padding="18dp"
-        android:src="@drawable/ic_pause_light"
-        app:layout_constraintLeft_toRightOf="@+id/btnStart"
+        android:padding="16dp"
+        android:src="@drawable/ic_red_pause"
+        app:layout_constraintLeft_toRightOf="@+id/btnSelect"
+        app:layout_constraintTop_toBottomOf="@+id/time_card"
+        app:layout_constraintRight_toLeftOf="@id/btnStart"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:neumorph_shapeType="flat" />
+
+    <soup.neumorphism.NeumorphFloatingActionButton
+        android:id="@+id/btnStart"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:padding="14dp"
+        android:src="@drawable/ic_green_play"
+        app:layout_constraintLeft_toRightOf="@+id/btnPause"
         app:layout_constraintRight_toLeftOf="@+id/btnReset"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/time_card"
@@ -86,11 +85,10 @@
         android:id="@+id/btnReset"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:layout_margin="20dp"
         android:padding="20dp"
         android:src="@drawable/ic_refresh_light"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toRightOf="@+id/btnPause"
+        app:layout_constraintLeft_toRightOf="@+id/btnStart"
         app:layout_constraintTop_toBottomOf="@+id/time_card"
         app:layout_constraintRight_toLeftOf="@+id/btnAlarmStop"
         app:neumorph_shapeType="flat" />
