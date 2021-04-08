@@ -3,7 +3,7 @@
 ## 概要
 はじめてGoogle Play に公開したアプリです。シンプルなタイマーです。制作時間は2日です。
 
-![google_play](https://user-images.githubusercontent.com/51118613/113527492-a8b82300-95f8-11eb-82a3-3145fb5cb15c.JPG)
+![google_play](https://user-images.githubusercontent.com/51118613/113967868-e624e680-986c-11eb-9373-ef921cb1acc8.JPG)
 
 ### 操作方法
 
