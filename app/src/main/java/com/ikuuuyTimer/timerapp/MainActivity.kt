@@ -1,29 +1,20 @@
 package com.ikuuuyTimer.timerapp
 
-import android.content.pm.ActivityInfo
-import android.media.AudioManager
-import android.media.MediaPlayer
-import android.media.Ringtone
-import android.media.RingtoneManager
-import android.net.Uri
 import android.os.Bundle
-import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import kotlinx.android.synthetic.main.activity_main.*
-import java.io.IOException
-
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var viewModel: MainViewModel
 
-    var hour: Int = 0
-    var min: Int = 0
-    var sec: Int = 0
+    private var hour: Int = 0
+    private var min: Int = 0
+    private var sec: Int = 0
 
-    var isFirst: Boolean = true
+    private var isFirst: Boolean = true
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,11 +23,11 @@ class MainActivity : AppCompatActivity() {
         viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
 
         viewModel.currentTime.observe(this, Observer { response ->
-            tvTime.setText(response)
+            tvTime.text = response.toString()
         })
 
         viewModel.finishSentence.observe(this, Observer { response ->
-            tvTime.setText(response)
+            tvTime.text = response.toString()
         })
 
         btnSelect.setOnClickListener {
@@ -60,8 +51,10 @@ class MainActivity : AppCompatActivity() {
         }
 
         btnAlarmStop.setOnClickListener {
-            viewModel.mediaPlayer!!.stop()
-            tvTime.setText("00:00:00")
+            if(viewModel.mediaPlayer != null){
+                viewModel.mediaPlayer!!.stop()
+                tvTime.text = "00:00:00"
+            }
         }
     }
 

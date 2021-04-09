@@ -7,24 +7,31 @@ import android.media.RingtoneManager
 import android.net.Uri
 import android.os.CountDownTimer
 import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import java.io.IOException
 import java.util.concurrent.TimeUnit
 
 class MainViewModel(application: Application) : AndroidViewModel(application) {
-    val currentTime: MutableLiveData<String> = MutableLiveData()
-    val finishSentence: MutableLiveData<String> = MutableLiveData()
+    private val _currentTime: MutableLiveData<String> = MutableLiveData()
+    private val _finishSentence: MutableLiveData<String> = MutableLiveData()
 
     lateinit var mCountDown: CountDownTimer
 
-    var isRunning: Boolean = false
+    var isRunning = false
     var startTime: Long = 0
 
-    var current: Long = 0
+    private var current: Long = 0
     var fisrtTime: Long = 0
 
     var mediaPlayer: MediaPlayer? = null
-    var uri: Uri? = null
+    private var uri: Uri? = null
+
+    val currentTime: LiveData<String>
+        get() = _currentTime
+
+    val finishSentence: LiveData<String>
+        get() = _finishSentence
 
     fun startTimer(time: Long) {
         mCountDown = object : CountDownTimer(time, 1000) {
@@ -35,7 +42,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
 
             override fun onFinish() {
                 playAlarm()
-                finishSentence.value = "Finish"
+                _finishSentence.value = "Finish"
             }
         }
         mCountDown.start()
@@ -69,7 +76,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
                     time
                 )
             )
-        currentTime.value = String.format("%02d:%02d:%02d", hh, mm, ss)
+        _currentTime.value = String.format("%02d:%02d:%02d", hh, mm, ss)
     }
 
     fun playAlarm() {
